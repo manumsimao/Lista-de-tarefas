@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "901935971432",
+    "project_id": "lista-de-tarefas-27fe7",
+    "storage_bucket": "lista-de-tarefas-27fe7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901935971432:android:4693e4e38e939ee5e50fdd",
+        "android_client_info": {
+          "package_name": "com.ifsp.pdm.emanoela.listadetarefas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901935971432-fmks1rpneq5bmhu7g63fvcnl55vco88k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjE6r-jVhHsfiajwAmUKH29Cn0PMMvNOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901935971432-fmks1rpneq5bmhu7g63fvcnl55vco88k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
