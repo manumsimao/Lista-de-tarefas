@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Lista de Tarefas</string>
+    <string name="adicionar_nova_tarefa">Adicionar nova tarefa</string>
+    <string name="salvar">Salvar</string>
+    <string name="entrar">Entrar</string>
+    <string name="recuperar_senha">Recuperar senha</string>
+    <string name="senha">Senha</string>
+    <string name="repetir_senha">Repetir senha</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="e_mail">E-mail</string>
+    <string name="enviar_e_mail">Enviar e-mail</string>
+    <string name="descricao_da_tarefa">Descrição da tarefa:</string>
+    <string name="criada_por">Criada por:</string>
+    <string name="criada_em">Criada em:</string>
+    <string name="data_prevista_de_conclusao">Data prevista de conclusão:</string>
+    <string name="concluida_por">Concluída por:</string>
+    <string name="nome_do_usuario">Email do Usuário</string>
+    <string name="concluida_em">Concluída em:</string>
+    <string name="dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="voltar">Voltar</string>
+    <string name="titulo_da_tarefa">Título da tarefa:</string>
+    <string name="status">Status:</string>
+    <string name="status_da_tarefa">Status da tarefa</string>
+    <string name="nova_tarefa">Nova Tarefa</string>
+    <string name="sair">Sair</string>
 </resources>
