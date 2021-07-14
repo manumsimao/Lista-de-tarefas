@@ -10,8 +10,8 @@ data class Tarefa(
     val usuarioCriador: String = "",
     val dataCriacao: String = "",
     val dataPrevista: String = "",
-    val status: String = "",
-    val usuarioConcluiu: String = "",
-    val dataConclusao: String = ""
+    var status: String = "",
+    var usuarioConcluiu: String = "",
+    var dataConclusao: String = ""
 
 ) : Parcelable

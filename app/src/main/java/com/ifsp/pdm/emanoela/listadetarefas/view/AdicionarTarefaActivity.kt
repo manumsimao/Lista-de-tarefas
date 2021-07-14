@@ -31,7 +31,7 @@ class AdicionarTarefaActivity : AppCompatActivity() {
         val tarefa: Tarefa
         val titulo = activityAdicionarTarefaBinding.tituloET.text.toString()
         if (view == activityAdicionarTarefaBinding.salvarBTN) {
-            if (tarefaController.existeTarefa(titulo) == -1) {
+            if (tarefaController.existeTarefa(titulo) == -1 && titulo.isNotBlank() && titulo.isNotEmpty() && titulo != "") {
                 with(activityAdicionarTarefaBinding) {
                     tarefa = Tarefa(
                         titulo,
@@ -43,14 +43,18 @@ class AdicionarTarefaActivity : AppCompatActivity() {
                     )
                 }
 
-
                 val retornoIntent = Intent()
                 retornoIntent.putExtra("tarefa", tarefa)
                 setResult(RESULT_OK, retornoIntent)
                 finish()
             } else {
-                Toast.makeText(this, "Já existe uma tarefa com esse título", Toast.LENGTH_LONG)
-                    .show()
+                if(titulo.isBlank() && titulo.isEmpty() && titulo == ""){
+                    Toast.makeText(this, "O título da tarefa não pode estar vazio", Toast.LENGTH_LONG)
+                        .show()
+                }else {
+                    Toast.makeText(this, "Já existe uma tarefa com esse título", Toast.LENGTH_LONG)
+                        .show()
+                }
             }
         }
 

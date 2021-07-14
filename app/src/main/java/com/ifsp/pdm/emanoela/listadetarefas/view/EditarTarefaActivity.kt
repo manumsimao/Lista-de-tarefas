@@ -14,13 +14,10 @@ import java.util.*
 class EditarTarefaActivity : AppCompatActivity() {
     private lateinit var editarTarefaBinding: ActivityEditarTarefaBinding
     private val sdf = SimpleDateFormat("dd/MM/yyyy")
-    private lateinit var tarefaController: TarefaController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         editarTarefaBinding = ActivityEditarTarefaBinding.inflate(layoutInflater)
         setContentView(editarTarefaBinding.root)
-
-        tarefaController = TarefaController(null)
 
         val bundle: Bundle? = intent.extras
         if (bundle != null) {
@@ -39,44 +36,36 @@ class EditarTarefaActivity : AppCompatActivity() {
 
     fun onClick(view: View) {
         val tarefa: Tarefa
+        with(editarTarefaBinding) {
+            tarefa = Tarefa(
+                tituloTV.text.toString(),
+                descricaoET.text.toString(),
+                usuarioCriadorTV.text.toString(),
+                dataCriacaoTV.text.toString(),
+                dataPrevistaET.text.toString(),
+            )
+        }
+        val retornoIntent = Intent()
         when (view) {
             editarTarefaBinding.salvarBTN -> {
-                with(editarTarefaBinding) {
-                    tarefa = Tarefa(
-                        tituloTV.text.toString(),
-                        descricaoET.text.toString(),
-                        usuarioCriadorTV.text.toString(),
-                        dataCriacaoTV.text.toString(),
-                        dataPrevistaET.text.toString(),
-                        StatusTarefas.TAREFA_ABERTA
-                    )
-                }
-                val retornoIntent = Intent()
+                tarefa.status = StatusTarefas.TAREFA_ABERTA
                 retornoIntent.putExtra("tarefa", tarefa)
                 setResult(RESULT_OK, retornoIntent)
                 finish()
             }
             editarTarefaBinding.concluirBTN -> {
                 with(editarTarefaBinding) {
-                    tarefa = Tarefa(
-                        tituloTV.text.toString(),
-                        descricaoET.text.toString(),
-                        usuarioCriadorTV.text.toString(),
-                        dataCriacaoTV.text.toString(),
-                        dataPrevistaET.text.toString(),
-                        StatusTarefas.TAREFA_CONCLUIDA,
-                        AutenticacaoFirebase.firebaseAuth.currentUser?.email.toString(),
-                        sdf.format(Date())
-                    )
+                    tarefa.status = StatusTarefas.TAREFA_CONCLUIDA
+                    tarefa.usuarioConcluiu = AutenticacaoFirebase.firebaseAuth.currentUser?.email.toString()
+                    tarefa.dataConclusao = sdf.format(Date())
                 }
-                val retornoIntent = Intent()
                 retornoIntent.putExtra("tarefa", tarefa)
                 setResult(RESULT_OK, retornoIntent)
                 finish()
             }
             editarTarefaBinding.excluirBTN -> {
-                tarefaController.removeTarefa(editarTarefaBinding.tituloTV.text.toString())
-                val retornoIntent = Intent()
+                retornoIntent.putExtra("tarefa", tarefa)
+                retornoIntent.putExtra("acao", "excluir")
                 setResult(RESULT_OK, retornoIntent)
                 finish()
             }

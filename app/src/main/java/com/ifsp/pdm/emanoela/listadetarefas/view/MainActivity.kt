@@ -64,10 +64,17 @@ class MainActivity : AppCompatActivity() {
                     if (tarefa != null) {
                         val index =
                             tarefasList.indexOf(tarefasList.find { it.titulo == tarefa.titulo })
-                        tarefasList[index] = tarefa
-                        tarefaController.atualizaTarefa(tarefa)
+
+                        if(activityResult.data?.getStringExtra("acao") == "excluir") {
+                            tarefaController.removeTarefa(tarefa.titulo)
+                            tarefasList.remove(tarefa)
+                            tarefasAdapter.notifyDataSetChanged()
+                        } else {
+                            tarefasList[index] = tarefa
+                            tarefaController.atualizaTarefa(tarefa)
+                            tarefasAdapter.notifyDataSetChanged()
+                        }
                     }
-                    tarefasAdapter.notifyDataSetChanged()
                 }
             }
     }

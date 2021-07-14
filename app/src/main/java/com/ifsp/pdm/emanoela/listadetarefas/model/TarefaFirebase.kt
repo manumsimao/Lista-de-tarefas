@@ -58,6 +58,10 @@ class TarefaFirebase(mainActivity: MainActivity?) : TarefaDAO {
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 val tarefaRemovida: Tarefa = (snapshot.getValue<Tarefa>() ?: Tarefa())
                 tarefasList.remove(tarefaRemovida)
+                if(mainActivity != null) {
+                    mainActivity.tarefasList.remove(tarefaRemovida)
+                    mainActivity.tarefasAdapter.notifyDataSetChanged()
+                }
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
