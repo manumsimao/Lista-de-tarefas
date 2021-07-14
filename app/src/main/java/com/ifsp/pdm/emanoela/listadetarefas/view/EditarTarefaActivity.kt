@@ -20,7 +20,7 @@ class EditarTarefaActivity : AppCompatActivity() {
         editarTarefaBinding = ActivityEditarTarefaBinding.inflate(layoutInflater)
         setContentView(editarTarefaBinding.root)
 
-        tarefaController = TarefaController()
+        tarefaController = TarefaController(null)
 
         val bundle: Bundle? = intent.extras
         if (bundle != null) {

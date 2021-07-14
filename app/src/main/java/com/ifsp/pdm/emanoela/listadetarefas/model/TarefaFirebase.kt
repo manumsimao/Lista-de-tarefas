@@ -1,5 +1,6 @@
 package com.ifsp.pdm.emanoela.listadetarefas.model
 
+import android.app.Activity
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -8,8 +9,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.ifsp.pdm.emanoela.listadetarefas.model.TarefaFirebase.Constantes.LISTA_TAREFAS_DATABASE
+import com.ifsp.pdm.emanoela.listadetarefas.view.MainActivity
 
-class TarefaFirebase : TarefaDAO {
+class TarefaFirebase(mainActivity: MainActivity?) : TarefaDAO {
     object Constantes {
         const val LISTA_TAREFAS_DATABASE = "listaTarefas"
     }
@@ -25,7 +27,12 @@ class TarefaFirebase : TarefaDAO {
             override fun onDataChange(snapshot: DataSnapshot) {
                 tarefasList.clear()
                 for (c in snapshot.children) {
-                    tarefasList.add(c.getValue<Tarefa>() ?: Tarefa())
+                    val tarefa: Tarefa = (c.getValue<Tarefa>() ?: Tarefa())
+                    tarefasList.add(tarefa)
+                    if (mainActivity != null) {
+                        mainActivity.tarefasList.add(tarefa)
+                        mainActivity.tarefasAdapter.notifyDataSetChanged()
+                    }
                 }
             }
 

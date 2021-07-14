@@ -24,7 +24,7 @@ class AdicionarTarefaActivity : AppCompatActivity() {
         activityAdicionarTarefaBinding = ActivityAdicionarTarefaBinding.inflate(layoutInflater)
         setContentView(activityAdicionarTarefaBinding.root)
 
-        tarefaController = TarefaController()
+        tarefaController = TarefaController(null)
     }
 
     fun onClick(view: View) {
